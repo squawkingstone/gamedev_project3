@@ -8,11 +8,19 @@ public class Pickup : MonoBehaviour
 	Transform m_Target;
 	Rigidbody m_Rigidbody;
 
+// all pickups get spawned in grabbed, so they'll try to hop into the pickup
+// slot but if they can't then they'll destroy themselves, this seems l
+
 	void Awake()
 	{
 		m_Grabbed = false;
 		m_Target = null;
 		m_Rigidbody = GetComponent<Rigidbody>();
+	}
+
+	void Start()
+	{
+		//TryToGetGrabbed();
 	}
 
 	void FixedUpdate()
@@ -35,6 +43,19 @@ public class Pickup : MonoBehaviour
 		m_Grabbed = false;
 		m_Rigidbody.isKinematic = false;
 		m_Target = null;
+	}
+
+	void TryToGetGrabbed()
+	{
+		ObjectGrab grab = GameObject.FindGameObjectWithTag("Player").GetComponent<ObjectGrab>();
+		if (grab.IsHolding())
+		{
+			Destroy(this.gameObject);
+		}
+		else
+		{
+			grab.Grab(this.gameObject);
+		}
 	}
 	
 }
