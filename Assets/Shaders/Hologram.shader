@@ -56,7 +56,7 @@
 				// sample the texture
 				fixed4 col = lerp(tex2D(_MainTex, i.uv), 
 					_Color,
-					step(frac((i.uv.y * _LineWidth) + (_Time.y * _ScrollSpeed)), 0.2));
+					step(frac((i.uv.y * _LineWidth) + (_Time.y * _ScrollSpeed)), 0.2) * 0.3);
 				
 				// apply fog
 				UNITY_APPLY_FOG(i.fogCoord, col);
