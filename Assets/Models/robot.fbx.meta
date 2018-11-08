@@ -1,0 +1,246 @@
+fileFormatVersion: 2
+guid: 634f6338f8cc40f49bb43efb7519b1e5
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Blowtorch
+    100002: Head
+    100004: joint2
+    100006: joint3
+    100008: joint5
+    100010: joint7
+    100012: LeftArm
+    100014: LeftForearm
+    100016: LeftHand
+    100018: LeftUpperHand
+    100020: Neck
+    100022: RightArm
+    100024: RightForearm
+    100026: RightHand
+    100028: RightUpperHand
+    100030: Robot
+    100032: //RootNode
+    100034: robotAntennae1
+    100036: robotAntennae2
+    100038: robotAxle
+    100040: robotBody
+    100042: robotHead
+    100044: robotLeftEye
+    100046: robotLeftHand
+    100048: robotLeftHinge
+    100050: robotLeftLeg
+    100052: robotLeftLowerArm
+    100054: robotLeftLowerHand
+    100056: robotLeftUpperArm
+    100058: robotLeftUpperHand
+    100060: robotNeck
+    100062: robotRightEye
+    100064: robotRightHand1
+    100066: robotRightHinge
+    100068: robotRightLeg
+    100070: robotRightLowerArm
+    100072: robotRightLowerHand
+    100074: robotRightUpperArm
+    100076: robotRightUpperHand
+    100078: robotWheel
+    100080: Spine
+    100082: UpperBody
+    400000: Blowtorch
+    400002: Head
+    400004: joint2
+    400006: joint3
+    400008: joint5
+    400010: joint7
+    400012: LeftArm
+    400014: LeftForearm
+    400016: LeftHand
+    400018: LeftUpperHand
+    400020: Neck
+    400022: RightArm
+    400024: RightForearm
+    400026: RightHand
+    400028: RightUpperHand
+    400030: Robot
+    400032: //RootNode
+    400034: robotAntennae1
+    400036: robotAntennae2
+    400038: robotAxle
+    400040: robotBody
+    400042: robotHead
+    400044: robotLeftEye
+    400046: robotLeftHand
+    400048: robotLeftHinge
+    400050: robotLeftLeg
+    400052: robotLeftLowerArm
+    400054: robotLeftLowerHand
+    400056: robotLeftUpperArm
+    400058: robotLeftUpperHand
+    400060: robotNeck
+    400062: robotRightEye
+    400064: robotRightHand1
+    400066: robotRightHinge
+    400068: robotRightLeg
+    400070: robotRightLowerArm
+    400072: robotRightLowerHand
+    400074: robotRightUpperArm
+    400076: robotRightUpperHand
+    400078: robotWheel
+    400080: Spine
+    400082: UpperBody
+    2100000: lambert1
+    2300000: robotAntennae1
+    2300002: robotAntennae2
+    2300004: robotAxle
+    2300006: robotBody
+    2300008: robotHead
+    2300010: robotLeftEye
+    2300012: robotLeftHand
+    2300014: robotLeftHinge
+    2300016: robotLeftLeg
+    2300018: robotLeftLowerArm
+    2300020: robotLeftLowerHand
+    2300022: robotLeftUpperArm
+    2300024: robotLeftUpperHand
+    2300026: robotNeck
+    2300028: robotRightEye
+    2300030: robotRightHand1
+    2300032: robotRightHinge
+    2300034: robotRightLeg
+    2300036: robotRightLowerArm
+    2300038: robotRightLowerHand
+    2300040: robotRightUpperArm
+    2300042: robotRightUpperHand
+    2300044: robotWheel
+    3300000: robotAntennae1
+    3300002: robotAntennae2
+    3300004: robotAxle
+    3300006: robotBody
+    3300008: robotHead
+    3300010: robotLeftEye
+    3300012: robotLeftHand
+    3300014: robotLeftHinge
+    3300016: robotLeftLeg
+    3300018: robotLeftLowerArm
+    3300020: robotLeftLowerHand
+    3300022: robotLeftUpperArm
+    3300024: robotLeftUpperHand
+    3300026: robotNeck
+    3300028: robotRightEye
+    3300030: robotRightHand1
+    3300032: robotRightHinge
+    3300034: robotRightLeg
+    3300036: robotRightLowerArm
+    3300038: robotRightLowerHand
+    3300040: robotRightUpperArm
+    3300042: robotRightUpperHand
+    3300044: robotWheel
+    4300000: robotWheel
+    4300002: robotHead
+    4300004: robotRightEye
+    4300006: robotLeftEye
+    4300008: robotAntennae1
+    4300010: robotAntennae2
+    4300012: robotNeck
+    4300014: robotRightHand1
+    4300016: robotRightLowerArm
+    4300018: robotRightUpperArm
+    4300020: robotLeftLowerHand
+    4300022: robotRightLowerHand
+    4300024: robotLeftHand
+    4300026: robotRightUpperHand
+    4300028: robotRightHinge
+    4300030: robotLeftUpperHand
+    4300032: robotLeftHinge
+    4300034: robotLeftLowerArm
+    4300036: robotLeftUpperArm
+    4300038: robotAxle
+    4300040: robotBody
+    4300042: robotRightLeg
+    4300044: robotLeftLeg
+    7400000: Take 001
+    9500000: //RootNode
+    2186277476908879412: ImportLogs
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: "Invalid Avatar Rig Configuration. Missing or invalid transform:\n\tRequired
+      human bone 'LeftUpperLeg' not found\n"
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
