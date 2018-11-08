@@ -15,6 +15,7 @@ public class ObjectGrab : MonoBehaviour
 
 	GameObject m_Object;
 	RaycastHit m_MachineHit, m_PickupHit;
+	RaycastHit m_Hit;
 	bool m_Holding;
 	bool m_JustGrabbed;
 
@@ -38,7 +39,7 @@ public class ObjectGrab : MonoBehaviour
 		if (Input.GetMouseButtonDown(0))
 		{
 			// use two rays, a pickup ray and a machine ray
-			bool machineRaycast = Ray
+			
 			bool DidRaycast = RaycastOnLayer((m_Holding) ? m_MachineLayer : m_PickupLayer, out m_Hit);
 			if (DidRaycast && m_Holding && !m_JustGrabbed)
 			{
