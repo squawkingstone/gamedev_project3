@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
         m_Tutorial = true;
     }
 
+    [ContextMenu("End Tutorial")]
     void EndTutorial()
     {
         m_Tutorial = false;
