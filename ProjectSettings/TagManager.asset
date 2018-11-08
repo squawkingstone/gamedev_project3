@@ -7,6 +7,10 @@ TagManager:
   - Repairable
   - PhysicsObject
   - Pickup
+  - Filter
+  - PowerCell
+  - CoolingCell
+  - FilterPickup
   layers:
   - Default
   - TransparentFX
@@ -17,7 +21,7 @@ TagManager:
   - 
   - 
   - PostProcessing
-  - Repairable
+  - Machine
   - Player
   - Pickup
   - MapEnvironment
