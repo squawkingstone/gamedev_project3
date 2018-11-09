@@ -428,8 +428,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "ERROR LOG:\n  Underperformance of maintainence robot\n \n  Issue an immediate
-    replacement and have the robot sent to the\n  scrapping bay."
+  m_Text: "PERFORMANCE REPORT:\n    Maintainence performed exceptionally. Robot has
+    done extraoridnarily well to keep the heart beating.\n\n    Extermination will
+    continue as scheduled.\n    "
 --- !u!222 &807316727
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -469,7 +470,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 402, y: -49}
+  m_AnchoredPosition: {x: 369, y: -29.15}
   m_SizeDelta: {x: 946.3, y: 307.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &932991043
@@ -484,7 +485,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.03292489, g: 1, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -504,7 +505,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: FAILURE
+  m_Text: SUCCESS
 --- !u!222 &932991044
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -669,7 +670,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 164, y: -160}
+  m_AnchoredPosition: {x: 152, y: -160}
   m_SizeDelta: {x: 135.6, y: 45.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1621205518
