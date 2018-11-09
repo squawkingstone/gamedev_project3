@@ -20,4 +20,9 @@ public class LoadScene : MonoBehaviour {
     {
         SceneManager.LoadScene("RoomPrototype");
     }
+
+    public void LoadTitle()
+    {
+        SceneManager.LoadScene("Title");
+    }
 }
