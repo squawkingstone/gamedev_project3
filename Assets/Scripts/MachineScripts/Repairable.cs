@@ -16,6 +16,7 @@ public class Repairable : MonoBehaviour {
 
     public void Repair(float amount)
     {
+        Debug.Log("Repairing " + gameObject.name + ": " + systemLife);
         systemLife = Mathf.Clamp(systemLife + amount, 0f, maxLife);
     }
 

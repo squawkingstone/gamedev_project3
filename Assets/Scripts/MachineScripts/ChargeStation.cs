@@ -6,13 +6,11 @@ using UnityEngine;
 
 public class ChargeStation : Repairable 
 {
-	[SerializeField] GameObject cellPrefab;
-	[SerializeField] Transform spawnLocation;
-	[SerializeField] float maxCharge = 100;
+	[SerializeField] Transform cellSlot;
 	[SerializeField] float chargeSpeed = 1;
 
 	bool charging;
-	float chargeAmount;
+    Cell chargingCell;
 
 	public void InitChargeStation()
 	{
@@ -20,24 +18,34 @@ public class ChargeStation : Repairable
 		charging = false;
 	}
 
-	public void InsertCell(float amount)
+	public bool InsertCell(GameObject cell)
     {
         if (!charging)
         {
+            chargingCell = cell.GetComponent<Cell>();
+            chargingCell.Attach(() => {RemoveCell();});
+            cell.transform.parent = cellSlot;
+            cell.transform.localPosition = Vector3.zero;
             charging = true;
-            chargeAmount = amount;
+            return true;
         }
+        return false;
     }
 
     public void RemoveCell()
     {
-        // instantiates a cell charged by a certain amount;
-		Cell.CreateAndGrab(cellPrefab, spawnLocation.position, chargeAmount);
-		charging = false;
+        if (charging)
+        {
+		    charging = false;
+            chargingCell = null;
+        }
     }
 
     public void Charge()
     {
-        if (chargeAmount < maxCharge && charging) chargeAmount = Mathf.Clamp(chargeAmount + (chargeSpeed * Time.deltaTime), 0f, maxCharge); 
+        if (charging)
+        {
+            chargingCell.IncreaseCharge(chargeSpeed * Time.deltaTime);
+        }    
     }	
 }

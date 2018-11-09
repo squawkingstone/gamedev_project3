@@ -10,20 +10,21 @@ public class FilterScript : Repairable {
     // public GameObject filter;
     // public GameObject eventsystem; //This is in charge of all connecting events
     // public GameObject filtercell;
-    [SerializeField] float filterValue;
 
+    [SerializeField] float filterDecaySpeed;
+    [SerializeField] Transform filterSlot;
     [SerializeField] GameManager manager;
     [SerializeField] TransmissionScript transmission;
     
     // float systemlife; //How much HP the system has
-    float filterSupply; //How much supply is in the filter cell
+    Cell filter;
     // private bool offline = false; //Determines whether or not system is offline if its HP reaches 0
 
     // Use this for initialization
     void Start()
     {
         InitRepairable();
-        filterSupply = 100; // should this be zero if there's no filter in it yet?
+        filter = null; // should this be zero if there's no filter in it yet?
     }
 
     // Update is called once per frame
@@ -31,12 +32,9 @@ public class FilterScript : Repairable {
     {
         if (!manager.IsTutorial())
         {
-            if (transmission.Powered())
+            if (transmission.Powered() && filter != null)
             {
-                if (filterSupply > 0)
-                {
-                    filterSupply -= 5 * Time.deltaTime; //How fast the cell loses supply
-                }
+                filter.DecreaseCharge(filterDecaySpeed * Time.deltaTime);
             }
             else
             {
@@ -46,18 +44,29 @@ public class FilterScript : Repairable {
     }
 
     // should probably only do this if there's no filter in the thing
-    public void InsertFilter(float amount)
+    public bool InsertFilter(GameObject f)
     {
-        filterSupply += filterValue;
+        if (filter == null)
+        {
+            filter = f.GetComponent<Cell>();
+            filter.Attach(() => {RemoveFilter();});
+            filter.transform.parent = filterSlot;
+            filter.transform.localPosition = Vector3.zero;
+            return true;
+        }
+        return false;
     }
 
     public void RemoveFilter()
     {
-        // do the grab thing here...
+        filter = null;
     }
 
     public bool Filtered()
     {
-        return (filterSupply > 0f);
+        if (filter == null) 
+            return false;
+        else 
+            return (filter.GetCharge() > 0f);
     }
 }

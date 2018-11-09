@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,17 +13,42 @@ public class CoreScript : MonoBehaviour
     [SerializeField] float coolingLossRate = 1;
     [SerializeField] float powerLossRate = 1;
 
+    [SerializeField] Transform[] coolingCellSlots;
+    [SerializeField] Transform[] powerCellSlots;
+
     [SerializeField] GameManager manager;
     [SerializeField] FilterScript filter;
+
     private float systemlife; //How much HP the system has
     private float totalPower; //How much energy the system has
     private float totalCooling; //How much cooling the system has
     private bool tutorial; //If tutorial = true, the system HP cannot go down
 
+    private bool[] coolingCellSlotsFree;
+    private bool[] powerCellSlotsFree;
+
+    private Cell[] coolingCells;
+    private Cell[] powerCells;
+
     // Use this for initialization
     void Start()
     {
         systemlife = maxLife;
+        coolingCellSlotsFree = new bool[coolingCellSlots.Length];
+        powerCellSlotsFree = new bool[powerCellSlots.Length];
+        coolingCells = new Cell[coolingCellSlots.Length];
+        powerCells = new Cell[powerCellSlots.Length];
+
+        for (int i = 0; i < coolingCellSlotsFree.Length; i++)
+        {
+            coolingCellSlotsFree[i] = true;
+            coolingCells[i] = null;
+        }
+        for (int i = 0; i < powerCellSlotsFree.Length; i++)
+        {
+            powerCellSlotsFree[i] = true;
+            powerCells[i] = null;
+        }
     }
 
     // Update is called once per frame
@@ -35,7 +61,7 @@ public class CoreScript : MonoBehaviour
             {
                 GoOffline();
             }
-            // Debug.Log(systemlife);
+            ShowCoreStatus();
         }
     }
 
@@ -50,7 +76,7 @@ public class CoreScript : MonoBehaviour
     {
         if (totalCooling > 0)
         {
-            totalCooling -= coolingLossRate * Time.deltaTime;
+            ConsumeCooling();
         }
         else
         {
@@ -58,11 +84,13 @@ public class CoreScript : MonoBehaviour
         }
     }
 
+    
+
     void UpdatePower()
     {
         if (totalPower > 0)
         {
-            totalPower -= powerLossRate * Time.deltaTime;
+            ConsumePower();
         }
         else
         {
@@ -78,14 +106,86 @@ public class CoreScript : MonoBehaviour
         }
     }
 
-    public void AddCooling(float amount)
+    // should call something in cell so cells know they're attached
+    public bool AddCooling(GameObject cell, float amount)
     {
-        totalCooling += amount;
+        for (int i = 0; i < coolingCellSlots.Length; i++)
+        {
+            if (coolingCellSlotsFree[i])
+            {
+                totalCooling += amount;
+                cell.transform.position = coolingCellSlots[i].position;
+                coolingCells[i] = cell.GetComponent<Cell>();
+                coolingCells[i].Attach(() => { RemoveCoolingCell(i); });
+                coolingCellSlotsFree[i] = false;
+                return true;
+            }
+        }
+        return false;
     }
 
-    public void AddPower(float amount)
+    // should call something in cell so cells know they're attached
+    public bool AddPower(GameObject cell, float amount)
     {
-        totalPower += amount;
+        for (int i = 0; i < powerCellSlots.Length; i++)
+        {
+            if (powerCellSlotsFree[i])
+            {
+                totalPower += amount;
+                cell.transform.position = powerCellSlots[i].position;
+                powerCells[i] = cell.GetComponent<Cell>();
+                powerCells[i].Attach(() => { RemovePowerCell(i); });
+                powerCellSlotsFree[i] = false;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void RemoveCoolingCell(int i)
+    {
+        totalCooling -= coolingCells[i].GetCharge();
+        coolingCellSlotsFree[i] = true;
+        coolingCells[i] = null;
+    }
+
+    public void RemovePowerCell(int i)
+    {
+        totalPower -= powerCells[i].GetCharge();
+        powerCellSlotsFree[i] = true;
+        powerCells[i] = null;
+    }
+
+    private void ConsumeCooling()
+    {
+        float amount = coolingLossRate * Time.deltaTime;
+        for (int i = 0; i < coolingCellSlots.Length && amount > 0f; i++)
+        {
+            if (coolingCells[i] != null && coolingCells[i].GetCharge() > 0f)
+            {
+                /* Figure out how much to decrease */
+                float dec = Mathf.Min(amount, coolingCells[i].GetCharge());
+                coolingCells[i].DecreaseCharge(dec);
+                totalCooling -= dec;
+                amount -= dec;
+            }
+        }
+    }
+
+    private void ConsumePower()
+    {
+        float amount = powerLossRate * Time.deltaTime;
+        for (int i = 0; i < powerCellSlots.Length && amount > 0f; i++)
+        {
+            if (powerCells[i] != null && powerCells[i].GetCharge() > 0f)
+            {
+                /* Figure out how much to decrease */
+                float dec = Mathf.Min(amount, powerCells[i].GetCharge());
+                powerCells[i].DecreaseCharge(dec);
+                totalPower -= dec;
+                amount -= dec;
+            }
+        }
     }
 
     private void TakeTemperatureDamage()
@@ -116,5 +216,10 @@ public class CoreScript : MonoBehaviour
     void GoOffline()
     {
 
+    }
+
+    void ShowCoreStatus()
+    {
+        Debug.Log("Core: " + systemlife + " Power: " + totalPower + " Cooling: " + totalCooling);
     }
 }

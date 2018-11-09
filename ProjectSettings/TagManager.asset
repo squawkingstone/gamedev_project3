@@ -5,12 +5,14 @@ TagManager:
   serializedVersion: 2
   tags:
   - Repairable
-  - PhysicsObject
   - Pickup
   - Filter
   - PowerCell
   - CoolingCell
   - FilterPickup
+  - Core
+  - Radiator
+  - Refiner
   layers:
   - Default
   - TransparentFX

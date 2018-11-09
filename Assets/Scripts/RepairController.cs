@@ -7,7 +7,7 @@ public class RepairController : MonoBehaviour
 	[SerializeField] float m_RepairSpeed;
 	[SerializeField] float m_InteractDistance;
 
-	TestRepairableSystem m_RepairableSystem;
+	Repairable m_RepairableSystem;
 	Transform m_LookTransform;
 	RaycastHit m_Hit;
 	bool m_Repairing;
@@ -21,7 +21,7 @@ public class RepairController : MonoBehaviour
 	/* Handle the repair behavior */
 	void Update()
 	{
-		if (Input.GetMouseButtonDown(0) && 
+		if (Input.GetMouseButtonDown(1) && 
 			Physics.Raycast(
 				m_LookTransform.position,
 				m_LookTransform.forward,
@@ -30,15 +30,15 @@ public class RepairController : MonoBehaviour
 				1 << 9))
 		{
 			// Start repairing
-			m_RepairableSystem = m_Hit.transform.GetComponent<TestRepairableSystem>();
+			m_RepairableSystem = m_Hit.transform.GetComponent<Repairable>();
 			m_Repairing = true;
 		}
-		else if (Input.GetMouseButton(0) && m_Repairing)
+		else if (Input.GetMouseButton(1) && m_Repairing)
 		{
 			// continue repairing
 			m_RepairableSystem.Repair(m_RepairSpeed * Time.deltaTime);
 		}
-		else if (Input.GetMouseButtonUp(0) && m_Repairing)
+		else if (Input.GetMouseButtonUp(1) && m_Repairing)
 		{
 			m_RepairableSystem = null;
 			m_Repairing = false;
