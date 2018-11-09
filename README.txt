@@ -9,5 +9,8 @@ Clink by TechGkN (https://freesound.org/people/TechGkN/sounds/432245/)
 LightingBlowTorch.wav by 140084 (https://freesound.org/people/140084/sounds/326297/)
 toy truck single.wav by FreqMan (https://freesound.org/people/FreqMan/sounds/31596/)
 
+This game uses allegorithmic textures from substanceshare 
+https://share.allegorithmic.com/ 
+
 This game uses the following fonts from fontspace.com:
 Merkur font by Malwin Bela Hurkey (https://www.fontspace.com/malwin-b%C3%A9la-h%C3%BCrkey/merkur)
