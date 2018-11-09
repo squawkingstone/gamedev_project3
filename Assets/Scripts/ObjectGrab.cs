@@ -27,47 +27,43 @@ public class ObjectGrab : MonoBehaviour
 		Player = this;
 	}
 
-	/* Fix this later, I need to handle all the contextual mouse interaction
-     * which kind of just gets really messy so I think maybe this script should
-	 * handle everything related to the object interaction mode, and then there's
-	 * just some other script that handles the switching between the modes by
-	 * enabling/disabling different scripts.
-	 */
 	void Update()
 	{
 		// Need to check if I hit a machine and also if I hit a thing
 		if (Input.GetMouseButtonDown(0))
 		{
 			// use two rays, a pickup ray and a machine ray
+			bool machineCast = RaycastOnLayer(m_MachineLayer, out m_MachineHit);
+			bool pickupCast = RaycastOnLayer(m_PickupLayer, out m_PickupHit);
 			
-			bool DidRaycast = RaycastOnLayer((m_Holding) ? m_MachineLayer : m_PickupLayer, out m_Hit);
-			if (DidRaycast && m_Holding && !m_JustGrabbed)
+			/* If I'm looking at a machine and holding an object */
+			if (machineCast && m_Holding)
 			{
-				UseObjectWithMachine();	
+				/* Use Object with machine */
+				UseObjectWithMachine();
 			}
-			else if (DidRaycast && !m_Holding)
+			/* If I'm looking at a machine and not holding anything */
+			// else if (machineCast && !m_Holding)
+			// {
+			// 	/* Try to get object from machine */
+			// 	TryToGetCellFromMachine();
+			// }
+			/* If I'm looking at a pickup and not holding anything */
+			if (pickupCast && !m_Holding)
 			{
-				// I hit a pickup
-				Grab(m_Hit.transform.gameObject);
+				/* Grab item */
+				Grab(m_PickupHit.transform.gameObject);
 			}
-			else if (!DidRaycast && m_Holding && !m_JustGrabbed)
+			/* If I'm looking at a pickup and not holding anything */
+			if (m_Holding && !m_JustGrabbed)
 			{
-				// Drop the pickup
+				/* Drop Item */
 				Drop();
 			}
-			if (m_JustGrabbed) { m_JustGrabbed = false; }
-		}
-	}
 
-	void FixedUpdate()
-	{
-		if (m_Holding)
-		{
-			m_Object.transform.position = Vector3.Lerp(
-				m_Object.transform.position,
-				m_PickupSlot.transform.position,
-				0.5f
-			);
+			// Toggle so you can't drop
+			if (m_JustGrabbed) { m_JustGrabbed = false; }
+
 		}
 	}
 
@@ -75,47 +71,66 @@ public class ObjectGrab : MonoBehaviour
 	{
 		// I hit a machine
 		// do some stuff to update the machine and
-		switch (m_Hit.transform.tag)
+		bool shouldAttachObject = false;
+		switch (m_MachineHit.transform.tag)
 		{
 			case "Core":
-				CoreScript core = GetHitComponent<CoreScript>();
+				CoreScript core = GetHitComponent<CoreScript>(m_MachineHit);
 				if (IsHoldingWithTag("PowerCell"))
 				{
-					core.AddPower(GetHeldCellCharge());
+					shouldAttachObject = core.AddPower(m_Object, GetHeldCellCharge());
 				}
 				else if (IsHoldingWithTag("CoolingCell"))
 				{
-					core.AddCooling(GetHeldCellCharge());
+					shouldAttachObject = core.AddCooling(m_Object, GetHeldCellCharge());
 				}
 				break;
 			case "Filter":
-				FilterScript filter = GetHitComponent<FilterScript>();
+				FilterScript filter = GetHitComponent<FilterScript>(m_MachineHit);
 				if (IsHoldingWithTag("FilterPickup"))
 				{
-					filter.InsertFilter(GetHeldCellCharge());
+					shouldAttachObject = filter.InsertFilter(m_Object);
 				}
 				break;
 			case "Refiner":
-				RefinerScript refiner = GetHitComponent<RefinerScript>();
+				RefinerScript refiner = GetHitComponent<RefinerScript>(m_MachineHit);
 				if (IsHoldingWithTag("PowerCell"))
 				{
-					refiner.InsertCell(GetHeldCellCharge());
+					shouldAttachObject = refiner.InsertCell(m_Object);
 				}
 				break;
 			case "Radiator":
-				RadiatorScript radiator = GetHitComponent<RadiatorScript>();
+				RadiatorScript radiator = GetHitComponent<RadiatorScript>(m_MachineHit);
 				if (IsHoldingWithTag("CoolingCell"))
 				{
-					radiator.InsertCell(GetHeldCellCharge());
+					shouldAttachObject = radiator.InsertCell(m_Object);
 				}
 				break;
 		}
-		DropAndDestroy();
+		// should only destroy if the interaction makes sense
+		if (shouldAttachObject) AttachObject();
 	}
 
-	T GetHitComponent<T>()
+	void TryToGetCellFromMachine()
 	{
-		return m_Hit.transform.gameObject.GetComponent<T>();
+		switch (m_MachineHit.transform.tag)
+		{
+			case "Filter":
+				// removes the filter
+				GetHitComponent<FilterScript>(m_MachineHit).RemoveFilter();
+				break;
+			case "Radiator":
+				GetHitComponent<RadiatorScript>(m_MachineHit).RemoveCell();
+				break;
+			case "Refiner":
+				GetHitComponent<RefinerScript>(m_MachineHit).RemoveCell();
+				break;
+		}
+	}
+
+	T GetHitComponent<T>(RaycastHit hit)
+	{
+		return hit.transform.gameObject.GetComponent<T>();
 	}
 
 	float GetHeldCellCharge()
@@ -140,22 +155,30 @@ public class ObjectGrab : MonoBehaviour
 	public void Grab(GameObject pickup)
 	{
 		m_Object = pickup;
+		Cell cell = m_Object.GetComponent<Cell>();
+		if (cell.IsAttached())
+		{
+			cell.Detach();
+		}
 		m_Holding = true;
 		Rigidbody rb = m_Object.GetComponent<Rigidbody>();
 		if (rb != null) rb.isKinematic = true;
+		m_Object.transform.parent = m_PickupSlot.transform;
+		m_Object.transform.localPosition = Vector3.zero;
 		m_JustGrabbed = true;
 	}
 
 	public void Drop()
 	{
 		m_Object.GetComponent<Rigidbody>().isKinematic = false;
+		m_Object.transform.parent = null;
 		m_Object = null;
 		m_Holding = false;
 	}
 
-	public void DropAndDestroy()
+	public void AttachObject()
 	{
-		Destroy(m_Object.gameObject);
+		m_Object.transform.parent = null;
 		m_Object = null;
 		m_Holding = false;
 	}

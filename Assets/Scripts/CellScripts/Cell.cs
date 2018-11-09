@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Cell : MonoBehaviour 
 {
@@ -10,6 +11,8 @@ public class Cell : MonoBehaviour
 
 	float charge;
 	Material chargeMat;
+	bool attached;
+	UnityAction removeAction;
 
 	public static GameObject CreateCell(GameObject prefab, Vector3 position, float startingCharge)
 	{
@@ -37,6 +40,17 @@ public class Cell : MonoBehaviour
 		}
 		SetCharge(charge);
 	}
+
+	public void IncreaseCharge(float amount)
+	{
+		charge = Mathf.Clamp(charge + amount, 0f, maxCharge);
+		UpdateMaterial();
+	}
+
+	public void DecreaseCharge(float amount)
+	{
+		IncreaseCharge(-amount);
+	}
 	
 	void SetCharge(float charge)
 	{
@@ -56,5 +70,24 @@ public class Cell : MonoBehaviour
 	public float GetCharge()
 	{
 		return charge;
+	}
+
+	public void Attach(UnityAction removeAction)
+	{
+		Debug.Log("Attached");
+		attached = true;
+		this.removeAction = removeAction;
+	}
+
+	public void Detach()
+	{
+		Debug.Log("Detach");
+		attached = false;
+		this.removeAction();
+	}
+
+	public bool IsAttached()
+	{
+		return attached;
 	}
 }
