@@ -18,6 +18,7 @@ public class CoreScript : MonoBehaviour
 
     [SerializeField] GameManager manager;
     [SerializeField] FilterScript filter;
+    [SerializeField] MapSystemController map;
 
     private float systemlife; //How much HP the system has
     private float totalPower; //How much energy the system has
@@ -61,7 +62,7 @@ public class CoreScript : MonoBehaviour
             {
                 GoOffline();
             }
-            ShowCoreStatus();
+            map.UpdateMapSystem(systemlife, maxLife);
         }
     }
 
@@ -217,7 +218,7 @@ public class CoreScript : MonoBehaviour
     /* Called when the system dies, should do the game over stuff or call something in a game manager or something */
     void GoOffline()
     {
-
+        LoadScene.LoadLose();
     }
 
     void ShowCoreStatus()

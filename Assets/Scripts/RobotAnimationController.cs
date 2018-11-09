@@ -9,7 +9,8 @@ public class RobotAnimationController : MonoBehaviour
 
 	void Update()
 	{
-		//animator.SetBool("Walking", );
+		bool moving = (Vector3.Distance(controller.velocity, Vector3.zero) > 0.001f);
+		animator.SetBool("Moving", moving);
 	}
 
 }

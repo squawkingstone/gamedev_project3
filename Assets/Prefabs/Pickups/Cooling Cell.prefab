@@ -279,7 +279,6 @@ GameObject:
   - component: {fileID: 114908284498064968}
   - component: {fileID: 136973641571621504}
   - component: {fileID: 54125790141253126}
-  - component: {fileID: 114939688076424398}
   m_Layer: 11
   m_Name: Cooling Cell
   m_TagString: CoolingCell
@@ -1407,19 +1406,6 @@ MonoBehaviour:
   maxCharge: 100
   chargeRenderer: {fileID: 23343496412715984}
   hasChargeMaterial: 1
---- !u!114 &114939688076424398
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1360062950141164}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d618a1c81a8dd0f4aa4a89411b9f379e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_HighlightColor: {r: 0.3443396, g: 0.92893714, b: 1, a: 1}
-  m_HighlightDistance: 5
 --- !u!136 &136973641571621504
 CapsuleCollider:
   m_ObjectHideFlags: 1

@@ -11,6 +11,8 @@ public class MapSystemController : MonoBehaviour
 	[SerializeField] Renderer[] m_SubRenderers;
 	Material m_Material;
 
+	// [SerializeField] MapConnection[] connections;
+
 	void Awake () 
 	{
 		// get all the materials
@@ -24,10 +26,24 @@ public class MapSystemController : MonoBehaviour
 	
 	public void UpdateMapSystem(float systemLife, float maxLife)
 	{
+		
 		m_Material.SetColor(
 			"_Color", 
 			Color.Lerp(m_Damaged, m_Healthy, Mathf.Clamp01(systemLife / maxLife))
 		);
+		// Debug.Log(enable);
+		// for (int i = 0; i < connections.Length; i++)
+		// {
+		// 	Debug.Log("AAAA");
+		// 	if (enable)
+		// 	{
+		// 		connections[i].EnableLine();
+		// 	}
+		// 	else
+		// 	{
+		// 		connections[i].DisableLine();
+		// 	}
+		// }
 	}
 
 }

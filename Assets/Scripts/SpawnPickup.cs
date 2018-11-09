@@ -19,9 +19,11 @@ public class SpawnPickup : MonoBehaviour
 
 	void OnMouseDown()
 	{
+		Debug.Log("EYAH");
 		if (Vector3.Distance(m_Player.position, transform.position) <= m_InteractDistance 
 			&& !ObjectGrab.Player.IsHolding())
 		{
+			Debug.Log("hello");
 			Cell.CreateAndGrab(m_Pickup, transform.position + (Vector3.up), m_DefaultCharge);
 		}
 	}

@@ -6,6 +6,12 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] float gracePeriod;
     [SerializeField] GameObject signal;
+    [SerializeField] float startInterval;
+    [SerializeField] float endInterval;
+    [SerializeField] AnimationCurve difficultyScale;
+    [SerializeField] float roundTime;
+
+    [SerializeField] EventSystem eventSystem;
 
     Material signalMaterial;
     private bool m_Tutorial;
@@ -31,13 +37,25 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (timer < gracePeriod)
+        if (IsTutorial())
         {
-            timer += Time.deltaTime;
             if (timer >= gracePeriod)
             {
                 EndTutorial();
+                timer = 0f;
+                return;
             }
+            timer += Time.deltaTime;
+        }
+        if (!IsTutorial())
+        {
+            if (timer >= roundTime)
+            {
+                LoadScene.LoadWin();
+            }
+            eventSystem.SetInterval(Mathf.Lerp(startInterval, endInterval, timer/roundTime));
+            timer += Time.deltaTime;
+
         }
     }
 }

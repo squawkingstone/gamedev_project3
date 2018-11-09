@@ -18,11 +18,21 @@ public class LoadScene : MonoBehaviour {
 
     public void LoadGame()
     {
-        SceneManager.LoadScene("RoomPrototype");
+        SceneManager.LoadScene("heart_of_the_iron_giant");
     }
 
     public void LoadTitle()
     {
         SceneManager.LoadScene("Title");
+    }
+
+    public static void LoadWin()
+    {
+        SceneManager.LoadScene("Win");
+    }
+
+    public static void LoadLose()
+    {
+        SceneManager.LoadScene("Lose");
     }
 }

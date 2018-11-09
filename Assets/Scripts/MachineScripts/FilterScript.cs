@@ -35,7 +35,15 @@ public class FilterScript : Repairable {
             if (transmission.Powered())
             {
                 if (filter != null)
+                {
                     filter.DecreaseCharge(filterDecaySpeed * Time.deltaTime);
+                    if (filter.GetCharge() <= 0f)
+                    {
+                        GameObject f = filter.gameObject;
+                        filter.Detach();
+                        Destroy(f);
+                    }
+                }
             }
             else
             {

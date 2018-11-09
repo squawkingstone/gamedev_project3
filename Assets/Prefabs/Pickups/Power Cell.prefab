@@ -249,7 +249,6 @@ GameObject:
   - component: {fileID: 114725093959747894}
   - component: {fileID: 136230067292479600}
   - component: {fileID: 54840068534345716}
-  - component: {fileID: 114285142640564828}
   m_Layer: 11
   m_Name: Power Cell
   m_TagString: PowerCell
@@ -1393,19 +1392,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &114285142640564828
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1325147257457938}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d618a1c81a8dd0f4aa4a89411b9f379e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_HighlightColor: {r: 0.3443396, g: 0.92893714, b: 1, a: 1}
-  m_HighlightDistance: 5
 --- !u!114 &114725093959747894
 MonoBehaviour:
   m_ObjectHideFlags: 1
