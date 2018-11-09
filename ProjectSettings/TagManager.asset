@@ -3,7 +3,16 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Repairable
+  - Pickup
+  - Filter
+  - PowerCell
+  - CoolingCell
+  - FilterPickup
+  - Core
+  - Radiator
+  - Refiner
   layers:
   - Default
   - TransparentFX
@@ -14,11 +23,11 @@ TagManager:
   - 
   - 
   - PostProcessing
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Machine
+  - Player
+  - Pickup
+  - MapEnvironment
+  - MapRepairable
   - 
   - 
   - 
