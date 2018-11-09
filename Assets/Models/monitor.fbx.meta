@@ -16,6 +16,19 @@ ModelImporter:
     100020: pCube14
     100022: pCube15
     100024: pCylinder40
+    100026: group44
+    100028: monitor
+    100030: transform84
+    100032: transform85
+    100034: transform86
+    100036: transform87
+    100038: transform88
+    100040: transform89
+    100042: transform90
+    100044: transform91
+    100046: transform92
+    100048: transform93
+    100050: transform94
     400000: group42
     400002: //RootNode
     400004: pasted__pasted__pCube14
@@ -29,6 +42,19 @@ ModelImporter:
     400020: pCube14
     400022: pCube15
     400024: pCylinder40
+    400026: group44
+    400028: monitor
+    400030: transform84
+    400032: transform85
+    400034: transform86
+    400036: transform87
+    400038: transform88
+    400040: transform89
+    400042: transform90
+    400044: transform91
+    400046: transform92
+    400048: transform93
+    400050: transform94
     2100000: lambert1
     2300000: pasted__pasted__pCube14
     2300002: pasted__pasted__pCylinder40
@@ -41,6 +67,7 @@ ModelImporter:
     2300016: pCube14
     2300018: pCube15
     2300020: pCylinder40
+    2300022: monitor
     3300000: pasted__pasted__pCube14
     3300002: pasted__pasted__pCylinder40
     3300004: pasted__pCube14
@@ -52,6 +79,7 @@ ModelImporter:
     3300016: pCube14
     3300018: pCube15
     3300020: pCylinder40
+    3300022: monitor
     4300000: pCube13
     4300002: pasted__pasted__pCube14
     4300004: pasted__pasted__pCylinder40
@@ -63,6 +91,7 @@ ModelImporter:
     4300016: pasted__pCube15
     4300018: pasted__pCube15
     4300020: pCube15
+    4300022: monitor
   externalObjects: {}
   materials:
     importMaterials: 1

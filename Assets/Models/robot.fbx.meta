@@ -88,6 +88,7 @@ ModelImporter:
     400080: Spine
     400082: UpperBody
     2100000: lambert1
+    2100002: lambert3
     2300000: robotAntennae1
     2300002: robotAntennae2
     2300004: robotAxle
@@ -172,8 +173,7 @@ ModelImporter:
     resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
-    rigImportErrors: "Invalid Avatar Rig Configuration. Missing or invalid transform:\n\tRequired
-      human bone 'LeftUpperLeg' not found\n"
+    rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
