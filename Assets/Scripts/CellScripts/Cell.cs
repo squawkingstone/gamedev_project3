@@ -56,7 +56,6 @@ public class Cell : MonoBehaviour
 	{
 		this.charge = charge;
 		UpdateMaterial();
-		Debug.Log(this.charge);
 	}
 
 	void UpdateMaterial()
@@ -64,6 +63,7 @@ public class Cell : MonoBehaviour
 		if (chargeMat != null)
 		{
 			// do the material update stuff
+			chargeMat.SetFloat("_Threshold", charge/maxCharge);
 		}
 	}
 

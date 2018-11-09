@@ -1,0 +1,94 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: RightArm
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Robot
+    m_Weight: 0
+  - m_Path: Robot/robotWheel
+    m_Weight: 0
+  - m_Path: Robot/Spine
+    m_Weight: 0
+  - m_Path: Robot/Spine/robotAxle
+    m_Weight: 0
+  - m_Path: Robot/Spine/robotBody
+    m_Weight: 0
+  - m_Path: Robot/Spine/robotLeftLeg
+    m_Weight: 0
+  - m_Path: Robot/Spine/robotRightLeg
+    m_Weight: 0
+  - m_Path: Robot/Spine/UpperBody
+    m_Weight: 0
+  - m_Path: Robot/Spine/UpperBody/LeftArm
+    m_Weight: 0
+  - m_Path: Robot/Spine/UpperBody/LeftArm/LeftForearm
+    m_Weight: 0
+  - m_Path: Robot/Spine/UpperBody/LeftArm/LeftForearm/LeftHand
+    m_Weight: 0
+  - m_Path: Robot/Spine/UpperBody/LeftArm/LeftForearm/LeftHand/LeftUpperHand
+    m_Weight: 0
+  - m_Path: Robot/Spine/UpperBody/LeftArm/LeftForearm/LeftHand/LeftUpperHand/joint7
+    m_Weight: 0
+  - m_Path: Robot/Spine/UpperBody/LeftArm/LeftForearm/LeftHand/LeftUpperHand/robotLeftHinge
+    m_Weight: 0
+  - m_Path: Robot/Spine/UpperBody/LeftArm/LeftForearm/LeftHand/LeftUpperHand/robotLeftUpperHand
+    m_Weight: 0
+  - m_Path: Robot/Spine/UpperBody/LeftArm/LeftForearm/LeftHand/RightUpperHand
+    m_Weight: 0
+  - m_Path: Robot/Spine/UpperBody/LeftArm/LeftForearm/LeftHand/RightUpperHand/joint5
+    m_Weight: 0
+  - m_Path: Robot/Spine/UpperBody/LeftArm/LeftForearm/LeftHand/RightUpperHand/robotRightHinge
+    m_Weight: 0
+  - m_Path: Robot/Spine/UpperBody/LeftArm/LeftForearm/LeftHand/RightUpperHand/robotRightUpperHand
+    m_Weight: 0
+  - m_Path: Robot/Spine/UpperBody/LeftArm/LeftForearm/LeftHand/robotLeftHand
+    m_Weight: 0
+  - m_Path: Robot/Spine/UpperBody/LeftArm/LeftForearm/LeftHand/robotLeftLowerHand
+    m_Weight: 0
+  - m_Path: Robot/Spine/UpperBody/LeftArm/LeftForearm/LeftHand/robotRightLowerHand
+    m_Weight: 0
+  - m_Path: Robot/Spine/UpperBody/LeftArm/LeftForearm/robotLeftLowerArm
+    m_Weight: 0
+  - m_Path: Robot/Spine/UpperBody/LeftArm/robotLeftUpperArm
+    m_Weight: 0
+  - m_Path: Robot/Spine/UpperBody/Neck
+    m_Weight: 0
+  - m_Path: Robot/Spine/UpperBody/Neck/Head
+    m_Weight: 0
+  - m_Path: Robot/Spine/UpperBody/Neck/Head/robotAntennae1
+    m_Weight: 0
+  - m_Path: Robot/Spine/UpperBody/Neck/Head/robotAntennae2
+    m_Weight: 0
+  - m_Path: Robot/Spine/UpperBody/Neck/Head/robotHead
+    m_Weight: 0
+  - m_Path: Robot/Spine/UpperBody/Neck/Head/robotLeftEye
+    m_Weight: 0
+  - m_Path: Robot/Spine/UpperBody/Neck/Head/robotRightEye
+    m_Weight: 0
+  - m_Path: Robot/Spine/UpperBody/Neck/robotNeck
+    m_Weight: 0
+  - m_Path: Robot/Spine/UpperBody/RightArm
+    m_Weight: 1
+  - m_Path: Robot/Spine/UpperBody/RightArm/RightForearm
+    m_Weight: 1
+  - m_Path: Robot/Spine/UpperBody/RightArm/RightForearm/RightHand
+    m_Weight: 1
+  - m_Path: Robot/Spine/UpperBody/RightArm/RightForearm/RightHand/Blowtorch
+    m_Weight: 1
+  - m_Path: Robot/Spine/UpperBody/RightArm/RightForearm/RightHand/Blowtorch/joint2
+    m_Weight: 1
+  - m_Path: Robot/Spine/UpperBody/RightArm/RightForearm/RightHand/Blowtorch/joint2/joint3
+    m_Weight: 1
+  - m_Path: Robot/Spine/UpperBody/RightArm/RightForearm/RightHand/robotRightHand1
+    m_Weight: 1
+  - m_Path: Robot/Spine/UpperBody/RightArm/RightForearm/robotRightLowerArm
+    m_Weight: 1
+  - m_Path: Robot/Spine/UpperBody/RightArm/robotRightUpperArm
+    m_Weight: 1

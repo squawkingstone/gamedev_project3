@@ -117,6 +117,7 @@ public class CoreScript : MonoBehaviour
                 cell.transform.position = coolingCellSlots[i].position;
                 coolingCells[i] = cell.GetComponent<Cell>();
                 coolingCells[i].Attach(() => { RemoveCoolingCell(i); });
+                coolingCells[i].transform.localRotation = Quaternion.identity;
                 coolingCellSlotsFree[i] = false;
                 return true;
             }
@@ -135,6 +136,7 @@ public class CoreScript : MonoBehaviour
                 cell.transform.position = powerCellSlots[i].position;
                 powerCells[i] = cell.GetComponent<Cell>();
                 powerCells[i].Attach(() => { RemovePowerCell(i); });
+                powerCells[i].transform.localRotation = Quaternion.identity;
                 powerCellSlotsFree[i] = false;
                 return true;
             }

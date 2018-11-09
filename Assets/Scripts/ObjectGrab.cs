@@ -7,6 +7,7 @@ public class ObjectGrab : MonoBehaviour
 	[SerializeField] Transform m_LookTransform;
 	[SerializeField] Transform m_PickupSlot;
 	[SerializeField] float m_PickupDistance = 1f;
+	[SerializeField] Animator animator;
 
 	public static ObjectGrab Player;
 
@@ -29,6 +30,7 @@ public class ObjectGrab : MonoBehaviour
 
 	void Update()
 	{
+		
 		// Need to check if I hit a machine and also if I hit a thing
 		if (Input.GetMouseButtonDown(0))
 		{
@@ -60,9 +62,10 @@ public class ObjectGrab : MonoBehaviour
 				/* Drop Item */
 				Drop();
 			}
-
-			// Toggle so you can't drop
-			if (m_JustGrabbed) { m_JustGrabbed = false; }
+			if (m_JustGrabbed) 
+			{ 
+				m_JustGrabbed = false; 
+			}
 
 		}
 	}
@@ -166,6 +169,7 @@ public class ObjectGrab : MonoBehaviour
 		m_Object.transform.parent = m_PickupSlot.transform;
 		m_Object.transform.localPosition = Vector3.zero;
 		m_JustGrabbed = true;
+		animator.SetTrigger("Grab");
 	}
 
 	public void Drop()

@@ -6,6 +6,7 @@ public class RepairController : MonoBehaviour
 {
 	[SerializeField] float m_RepairSpeed;
 	[SerializeField] float m_InteractDistance;
+	[SerializeField] Animator animator;
 
 	Repairable m_RepairableSystem;
 	Transform m_LookTransform;
@@ -31,7 +32,8 @@ public class RepairController : MonoBehaviour
 		{
 			// Start repairing
 			m_RepairableSystem = m_Hit.transform.GetComponent<Repairable>();
-			m_Repairing = true;
+			m_Repairing = (m_RepairableSystem != null);
+			animator.SetBool("Repairing", m_Repairing);
 		}
 		else if (Input.GetMouseButton(1) && m_Repairing)
 		{
@@ -42,6 +44,7 @@ public class RepairController : MonoBehaviour
 		{
 			m_RepairableSystem = null;
 			m_Repairing = false;
+			animator.SetBool("Repairing", false);
 		}
 	}
 

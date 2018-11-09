@@ -26,6 +26,7 @@ public class ChargeStation : Repairable
             chargingCell.Attach(() => {RemoveCell();});
             cell.transform.parent = cellSlot;
             cell.transform.localPosition = Vector3.zero;
+            cell.transform.localRotation = Quaternion.identity;
             charging = true;
             return true;
         }

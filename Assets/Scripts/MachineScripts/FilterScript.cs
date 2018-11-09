@@ -32,9 +32,10 @@ public class FilterScript : Repairable {
     {
         if (!manager.IsTutorial())
         {
-            if (transmission.Powered() && filter != null)
+            if (transmission.Powered())
             {
-                filter.DecreaseCharge(filterDecaySpeed * Time.deltaTime);
+                if (filter != null)
+                    filter.DecreaseCharge(filterDecaySpeed * Time.deltaTime);
             }
             else
             {
@@ -52,6 +53,7 @@ public class FilterScript : Repairable {
             filter.Attach(() => {RemoveFilter();});
             filter.transform.parent = filterSlot;
             filter.transform.localPosition = Vector3.zero;
+            filter.transform.localRotation = Quaternion.identity;
             return true;
         }
         return false;

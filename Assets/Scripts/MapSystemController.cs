@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class MapSystemController : MonoBehaviour 
 {
-	[SerializeField] public static Material m_DefaultMaterial;
-	[SerializeField] public static Color m_Healthy;
-	[SerializeField] public static Color m_Damaged;
+	[SerializeField] Material m_DefaultMaterial;
+	[SerializeField] Color m_Healthy;
+	[SerializeField] Color m_Damaged;
 
 	[SerializeField] Renderer[] m_SubRenderers;
 	Material m_Material;
 
-	void Start () 
+	void Awake () 
 	{
 		// get all the materials
 		m_SubRenderers[0].sharedMaterial = new Material(m_DefaultMaterial);
