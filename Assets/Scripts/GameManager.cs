@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] float endInterval;
     [SerializeField] AnimationCurve difficultyScale;
     [SerializeField] float roundTime;
+    [SerializeField] Text countdown;
 
     [SerializeField] EventSystem eventSystem;
 
@@ -46,6 +48,7 @@ public class GameManager : MonoBehaviour
                 return;
             }
             timer += Time.deltaTime;
+            SetCountdown(gracePeriod - timer);
         }
         if (!IsTutorial())
         {
@@ -55,7 +58,13 @@ public class GameManager : MonoBehaviour
             }
             eventSystem.SetInterval(Mathf.Lerp(startInterval, endInterval, timer/roundTime));
             timer += Time.deltaTime;
-
+            SetCountdown(roundTime - timer);   
         }
+    }
+
+    void SetCountdown(float count)
+    {
+        int seconds = Mathf.FloorToInt(count);
+        countdown.text = (seconds/60).ToString() + ":" + (seconds % 60).ToString("D2");
     }
 }
