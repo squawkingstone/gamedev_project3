@@ -50,6 +50,7 @@ public class CoreScript : MonoBehaviour
             powerCellSlotsFree[i] = true;
             powerCells[i] = null;
         }
+        map.UpdateMapSystem(systemlife, maxLife);
     }
 
     // Update is called once per frame

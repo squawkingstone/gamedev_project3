@@ -163,11 +163,16 @@ public class ObjectGrab : MonoBehaviour
 		{
 			cell.Detach();
 		}
+		else
+		{
+			cell.PlayClink();
+		}
 		m_Holding = true;
 		Rigidbody rb = m_Object.GetComponent<Rigidbody>();
 		if (rb != null) rb.isKinematic = true;
 		m_Object.transform.parent = m_PickupSlot.transform;
 		m_Object.transform.localPosition = Vector3.zero;
+		m_Object.transform.localRotation = Quaternion.identity;
 		m_JustGrabbed = true;
 		animator.SetTrigger("Grab");
 	}

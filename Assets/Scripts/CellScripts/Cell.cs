@@ -8,6 +8,7 @@ public class Cell : MonoBehaviour
 	[SerializeField] float maxCharge;
 	[SerializeField] Renderer chargeRenderer;
 	[SerializeField] bool hasChargeMaterial;
+	[SerializeField] AudioSource clink;
 
 	float charge;
 	Material chargeMat;
@@ -77,6 +78,7 @@ public class Cell : MonoBehaviour
 		Debug.Log("Attached");
 		attached = true;
 		this.removeAction = removeAction;
+		PlayClink();
 	}
 
 	public void Detach()
@@ -84,10 +86,21 @@ public class Cell : MonoBehaviour
 		Debug.Log("Detach");
 		attached = false;
 		this.removeAction();
+		PlayClink();
 	}
 
 	public bool IsAttached()
 	{
 		return attached;
+	}
+
+	public void PlayClink()
+	{
+		clink.Play();
+	}
+
+    void OnCollisionEnter(Collision collision)
+	{
+		PlayClink();
 	}
 }

@@ -62,6 +62,7 @@ public class FilterScript : Repairable {
             filter.transform.parent = filterSlot;
             filter.transform.localPosition = Vector3.zero;
             filter.transform.localRotation = Quaternion.identity;
+            filter.transform.localScale = Vector3.one;
             return true;
         }
         return false;
@@ -69,6 +70,7 @@ public class FilterScript : Repairable {
 
     public void RemoveFilter()
     {
+        filter.transform.localScale = Vector3.one * 0.5f;
         filter = null;
     }
 

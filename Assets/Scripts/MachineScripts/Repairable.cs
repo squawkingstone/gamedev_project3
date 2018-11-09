@@ -8,9 +8,11 @@ public class Repairable : MonoBehaviour {
     [SerializeField] float damageSpeed = 1;
     [SerializeField] MapSystemController map;
     [SerializeField] ParticleSystem sparks;
+    [SerializeField] AudioSource sparkSound;
        
     float systemLife;
     bool linesEnabled;
+    bool sparking = true;
 
     public void InitRepairable()
     {
@@ -60,13 +62,17 @@ public class Repairable : MonoBehaviour {
 
     public void UpdateSparks()
     {
-        if (!IsOnline())
+        if (!IsOnline() && !sparking)
         {
             sparks.Play();
+            sparkSound.Play();
+            sparking = true;
         }
-        else
+        if (IsOnline() && sparking)
         {
             sparks.Stop();
+            sparkSound.Stop();
+            sparking = false;
         }
     }
 
