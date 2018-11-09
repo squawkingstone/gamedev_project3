@@ -4,60 +4,55 @@ using UnityEngine;
 
 public class EventSystem : MonoBehaviour {
 
-    public GameObject eventsystem;
     [SerializeField] public TransmissionScript transmission;
     [SerializeField] public FilterScript filter;
     [SerializeField] public RadiatorScript radiator;
     [SerializeField] public RefinerScript refiner;
-    [SerializeField] public GameObject core;
     [SerializeField] private float timer;
+    [SerializeField] private float eventInterval;
+    [SerializeField] private float eventDamage;
+    [SerializeField] private float timeIncreaseSpeed;
 
     // Use this for initialization
     void Start () {
 
         timer = 0;
-
+        eventInterval = 40;
+        eventDamage = 30;
+        timeIncreaseSpeed = 1;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-        timer += 1 * Time.deltaTime;
+        timer += timeIncreaseSpeed * Time.deltaTime;
 
-        if(timer >= 120) //Reset timer every 2 minutes so it doesn't go to infinity
+        if(timer > eventInterval)
         {
             timer = 0;
-        }
+            int rng = Random.Range(1, 101); //RNG for 100%
 
-        if(timer % 40 == 0)
-        {
-            int rng = Random.Range(1, 101);
-            if(rng > 0 && rng <= 25)
+            if (rng > 0 && rng <= 20)
             {
-                filter.DecreaseLife(30);
+                filter.DecreaseLife(eventDamage); //20% chance every interval for filter to take damage
             }
-            if (rng > 25 && rng <= 50)
-            {
-                transmission.DecreaseLife(30);
-            }
-            if (rng > 50 && rng <= 75)
-            {
-                radiator.DecreaseLife(30);
-            }
-            if (rng > 0 && rng <= 25)
-            {
-                refiner.DecreaseLife(30);
-            }
-        }
 
-        if(timer % 60 == 0)
-        {
-            int rng = Random.Range(1, 201);
-            if (rng > 0 && rng <= 25)
+            else if (rng > 20 && rng <= 30)
             {
-                
-            }
-        }
+                transmission.DecreaseLife(eventDamage); //10% chance every interval for transmission to take damage
+            } 
 
+            else if (rng > 30 && rng <= 60)
+            {
+                radiator.DecreaseLife(eventDamage); //30% chance every interval for radiator to take damage
+            }
+
+            else if (rng > 60 && <= 90)
+            {
+                refiner.DecreaseLife(eventDamage); //30% chance every interval for radiator to take damage
+            }
+
+            //10% chance for nothing to happen
+        }
 	}
 }
